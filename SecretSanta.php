@@ -16,7 +16,6 @@ class SecretSanta {
 
 		$this->participants = $this->getParticipantsFromFile($file);
 
-
 		// keep trying until we find a successful pairing
 		$try_again = true;
 		while($try_again) {
@@ -64,8 +63,8 @@ class SecretSanta {
 		return $chosen;
 	}
 
-	// takes an associative array of participants and
-	// returns an associative array of participant pairs
+	// takes an array of participants and
+	// returns an array of participant pairs
 	function getParticipantPairs($participants) {
 		$participant_pairs = array();
 
@@ -99,6 +98,7 @@ class SecretSanta {
 	}
 
 	function emailGiftGivers() {
+
 		foreach($this->participant_pairs as $pair) {
 			$to = $pair["giver"]->displayName() . " " . $pair["giver"]->email; 
 			$message = "Dear " . $pair["giver"]->first_name . ",\n\n";
