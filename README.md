@@ -12,3 +12,4 @@ and e-mail addresses in the following format:
 
 Firstname Lastname &lt;email@address.com&gt;
 
+You can find an example test file in test-names.txt
