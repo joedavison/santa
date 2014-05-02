@@ -1,5 +1,8 @@
 <?
 
+// NOTE: set MAX_DRAWS in proportion to 
+// the number of supported participants
+
 define('MAX_DRAWS',100);
 
 require 'Participant.php';
@@ -13,6 +16,8 @@ class SecretSanta {
 
 		$this->participants = $this->getParticipantsFromFile($file);
 
+
+		// keep trying until we find a successful pairing
 		$try_again = true;
 		while($try_again) {
 			try {
@@ -73,6 +78,7 @@ class SecretSanta {
 					$random_participant = $this->getRandomParticipant($participants);			
 					$counter++;
 					if ($counter > MAX_DRAWS) {
+						// we've reached a dead-end / infinite loop, try again
 						throw new Exception();
 					}
 				}
